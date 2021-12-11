@@ -1,7 +1,7 @@
 //  Chessboard -  find nearest places for a Horse
 
 // Working code- 
-//https://jsfiddle.net/shbn/j4y8ez92/54/
+// https://jsfiddle.net/shbn/j4y8ez92/57/
 
 function drawLayout(possibilities=[],currPos){
 
