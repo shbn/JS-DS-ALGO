@@ -8,27 +8,17 @@
 //     func(arg)
 //   }
 
-
-
 function debounce(func, wait) {
-  let trigger = false;
-  let timer = null;
-    return (arg)=>{
-      clearTimeout(timer);
-      if(!trigger){
-        trigger = true;
-      } else{
-         timer = setTimeout(()=>{
-          func(arg)
-          trigger = false;
-
-        }, wait);
+  let timer = null;  
+  return (arg)=>{
+      if(timer){
+      		clearTimeout(timer);      
       }
+      timer = setTimeout(()=>{
+         func(arg)
+      }, wait);
   }
-
-  
 }
-// test setup
 var start = Date.now();
 
 function greet(name) {
@@ -40,13 +30,7 @@ const debouncedGreet = debounce(greet, 200);
   
 
 
-debouncedGreet('dylan');
-debouncedGreet('dylan2');
-debouncedGreet('dylan3');
+debouncedGreet('ignore');  //ignored
+debouncedGreet('trigger');  //triggered after 200ms
 
-/* expected output
-
-hi dylan!
-(roughly 202ms after start)
-
-*/
+setTimeout(()=>debouncedGreet('2nd trigger after wait'),500);  // trigerred after 700ms
